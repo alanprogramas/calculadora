@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULADORA</title>
+    <style>
+      body {
+    display: grid;
+    place-items: center; /* Centraliza o conteúdo vertical e horizontalmente */
+    height: 100vh; /* Define a altura da página como 100% da altura da tela */
+    margin: 0; /* Remove as margens padrão do corpo */
+    background-color: #333; /* Cor de fundo mais escura */
+    color: white; /* Cor do texto */
+}
+
+.container {
+    border: 1px solid #666;
+    padding: 20px;
+    background-color: #333; /* Cor de fundo mais escura para o formulário */
+    border-radius: 10px; /* Borda arredondada */
+    box-shadow: 0px 0px 10px;
+}
+
+table {
+    margin-top: 10px; /* Adiciona um espaço entre o formulário e a tabela */
+}
+
+th {
+    width: 50px; /* Define a largura fixa das células da tabela */
+    height: 50px; /* Define a altura fixa das células da tabela */
+    border: 1px solid black;
+    text-align: center; /* Alinha o texto ao centro nas células da tabela */
+    cursor: pointer; /* Altera o cursor para parecer clicável */
+}
+
+th:hover {
+    background-color: #555; /* Altera a cor de fundo ao passar o mouse sobre as células */
+}
+
+#espaco {
+    width: calc(100% - 22px); /* Define a largura do input para preencher o espaço disponível */
+    padding: 5px; /* Adiciona um espaço interno ao redor do texto no input */
+    margin-bottom: 10px; /* Adiciona um espaço entre o input e a tabela */
+    background-color: #444; /* Cor de fundo mais escura para o input */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+            <h1>CALCULADORA</h1>
+            <table>
+                <input type="text" id="espaco">
+                <tr>
+                    <th onclick="clicar('+')">+</th>
+                    <th onclick="clicar('-')">-</th>
+                    <th onclick="clicar('*')">*</th>
+                    <th onclick="clicar('/')">/</th>
+                </tr>
+                <tr>
+                    <th onclick="clicar('1')">1</th>
+                    <th onclick="clicar('2')">2</th>
+                    <th onclick="clicar('3')">3</th>
+                    <th onclick="remover()">C</th>
+                </tr>
+                <tr>
+                    <th onclick="clicar('4')">4</th>
+                    <th onclick="clicar('5')">5</th>
+                    <th onclick="clicar('6')">6</th>
+                    <th onclick="clicar('.')">.</th>
+                </tr>
+                <tr>
+                    <th onclick="clicar('7')">7</th>
+                    <th onclick="clicar('8')">8</th>
+                    <th onclick="clicar('9')">9</th>
+                    <th onclick="clicar('0')">0</th>
+                </tr>
+                <tr>
+                    <th colspan="4" onclick="calcular()">=</th>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        function clicar(num){
+            const numero = document.getElementById('espaco').value;
+            document.getElementById('espaco').value = numero + num;
+        }
+
+        function remover(){
+            document.getElementById('espaco').value = "";
+        }
+        function calcular() {
+    let expressao = document.getElementById('espaco').value;
+    let resultado = eval(expressao);
+    document.getElementById('espaco').value = resultado;
+}
+
+    </script>
+</body>
+</html>
